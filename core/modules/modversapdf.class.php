@@ -1,6 +1,6 @@
 <?php
 /* Copyright (C) 2004-2017 Laurent Destailleur  <eldy@users.sourceforge.net>
- * Copyright (C) 2018 Admin <thierry.nancy@gmail.com>
+ * Copyright (C) 2018 Thierry Nancy <thierry.nancy@gmail.com>
  *
  * This program is free software; you can redistribute it and/or modify
  * it under the terms of the GNU General Public License as published by
@@ -49,7 +49,7 @@ class modversapdf extends DolibarrModules
 
 		// Id for module (must be unique).
 		// Use here a free id (See in Home -> System information -> Dolibarr for list of used modules id).
-		$this->numero = 500000;		// TODO Go on page https://wiki.dolibarr.org/index.php/List_of_modules_id to reserve id number for your module
+		$this->numero = 580000;		// TODO check and regidter on http://wiki.dolibarr.org/index.php/List_of_modules_id to reserve id number for your module
 		// Key text used to identify module (for permissions, menus, etc...)
 		$this->rights_class = 'versapdf';
 
@@ -63,27 +63,27 @@ class modversapdf extends DolibarrModules
 
 		// Module label (no space allowed), used if translation string 'ModuleversapdfName' not found (MyModue is name of module).
 		$this->name = preg_replace('/^mod/i','',get_class($this));
-		// Module description, used if translation string 'ModuleversapdfDesc' not found (MyModue is name of module).
-		$this->description = "versapdfDescription";
+		// Module description, used if translation string 'ModulesitfacDesc' not found (MyModue is name of module).
+		$this->description = "Modèles PDF de documents configurables versapdf";
 		// Used only if file README.md and README-LL.md not found.
-		$this->descriptionlong = "versapdfDescription (Long)";
+		$this->descriptionlong =  "Modèles PDF de documents configurables versapdf";
 
-		$this->editor_name = 'Editor name';
-		$this->editor_url = 'https://www.example.com';
+		$this->editor_name = 'Unicloud';
+		$this->editor_url = 'https://www.unicloud.be';
 
 		// Possible values for version are: 'development', 'experimental', 'dolibarr', 'dolibarr_deprecated' or a version string like 'x.y.z'
-		$this->version = '1.0';
-		// Key used in llx_const table to save module status enabled/disabled (where VERSAPDF is value of property name of module in uppercase)
+		$this->version = 'development';
+		// Key used in llx_const table to save module status enabled/disabled (where DEVISBTP is value of property name of module in uppercase)
 		$this->const_name = 'MAIN_MODULE_'.strtoupper($this->name);
 		// Name of image file used for this module.
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
 		// If file is in module/img directory under name object_pictovalue.png, use this->picto='pictovalue@module'
-		$this->picto='generic';
-
+		//TN$this->picto='generic';
+		$this->picto = 'estimation@devisbtp';
 		// Defined all module parts (triggers, login, substitutions, menus, css, etc...)
-		// for default path (eg: /versapdf/core/xxxxx) (0=disable, 1=enable)
-		// for specific path of parts (eg: /versapdf/core/modules/barcode)
-		// for specific css file (eg: /versapdf/css/versapdf.css.php)
+		// for default path (eg: /sitfac/core/xxxxx) (0=disable, 1=enable)
+		// for specific path of parts (eg: /sitfac/core/modules/barcode)
+		// for specific css file (eg: /sitfac/css/sitfac.css.php)
 		$this->module_parts = array(
 		                        	'triggers' => 1,                                 	// Set this to 1 if module has its own trigger directory (core/triggers)
 									'login' => 0,                                    	// Set this to 1 if module has its own login method directory (core/login)
@@ -163,7 +163,7 @@ class modversapdf extends DolibarrModules
 		$this->dictionaries=array();
         /* Example:
         $this->dictionaries=array(
-            'langs'=>'mylangfile@versapdf',
+            'langs'=>'mylangfile@devisbtp',
             'tabname'=>array(MAIN_DB_PREFIX."table1",MAIN_DB_PREFIX."table2",MAIN_DB_PREFIX."table3"),		// List of tables we want to see into dictonnary editor
             'tablib'=>array("Table1","Table2","Table3"),													// Label of tables
             'tabsql'=>array('SELECT f.rowid as rowid, f.code, f.label, f.active FROM '.MAIN_DB_PREFIX.'table1 as f','SELECT f.rowid as rowid, f.code, f.label, f.active FROM '.MAIN_DB_PREFIX.'table2 as f','SELECT f.rowid as rowid, f.code, f.label, f.active FROM '.MAIN_DB_PREFIX.'table3 as f'),	// Request to select fields
@@ -311,7 +311,8 @@ class modversapdf extends DolibarrModules
 		// Create extrafields
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
-		//$result1=$extrafields->addExtraField('myattr1', "New Attr 1 label", 'boolean', 1, 3, 'thirdparty');
+		
+		$result1=$extrafields->addExtraField('rg', "Remise de garantie", 'boolean', 1, 3, 'facture');
 		//$result2=$extrafields->addExtraField('myattr2', "New Attr 2 label", 'string', 1, 10, 'project');
 
 		return $this->_init($sql, $options);
