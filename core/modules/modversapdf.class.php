@@ -79,7 +79,7 @@ class modversapdf extends DolibarrModules
 		// If file is in theme/yourtheme/img directory under name object_pictovalue.png, use this->picto='pictovalue'
 		// If file is in module/img directory under name object_pictovalue.png, use this->picto='pictovalue@module'
 		//TN$this->picto='generic';
-		$this->picto = 'estimation@devisbtp';
+		$this->picto = 'generic';
 		// Defined all module parts (triggers, login, substitutions, menus, css, etc...)
 		// for default path (eg: /sitfac/core/xxxxx) (0=disable, 1=enable)
 		// for specific path of parts (eg: /sitfac/core/modules/barcode)
@@ -228,15 +228,16 @@ class modversapdf extends DolibarrModules
 
 		// Example to declare a new Top Menu entry and its Left menu entry:
 		/* BEGIN MODULEBUILDER TOPMENU */
-		$this->menu[$r++]=array('fk_menu'=>'',			                // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
+		$this->menu[$r++]=array('fk_menu'=>0,			                // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 								'type'=>'top',			                // This is a Top menu entry
-								'titre'=>'versapdf',
+								'titre'=>'VERSAPDF',
 								'mainmenu'=>'versapdf',
-								'leftmenu'=>'',
+								'leftmenu'=>'versapdf',
 								'url'=>'/versapdf/versapdfindex.php',
 								'langs'=>'versapdf@versapdf',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 								'position'=>1000+$r,
-								'enabled'=>'$conf->versapdf->enabled',	// Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled.
+		    						'enabled'=>'1',
+		    //'enabled'=>'$conf->versapdf->enabled',	// Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled.
 								'perms'=>'1',			                // Use 'perms'=>'$user->rights->versapdf->level1->level2' if you want your menu with a permission rules
 								'target'=>'',
 								'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
@@ -244,32 +245,32 @@ class modversapdf extends DolibarrModules
 		/* END MODULEBUILDER TOPMENU */
 
 		// Example to declare a Left Menu entry into an existing Top menu entry:
-		/* BEGIN MODULEBUILDER LEFTMENU MYOBJECT
+		/* BEGIN MODULEBUILDER LEFTMENU MYOBJECT*/
 		$this->menu[$r++]=array(	'fk_menu'=>'fk_mainmenu=versapdf',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 								'type'=>'left',			                // This is a Left menu entry
-								'titre'=>'List MyObject',
+								'titre'=>'Parametres TCPDF',
 								'mainmenu'=>'versapdf',
 								'leftmenu'=>'versapdf',
 								'url'=>'/versapdf/myobject_list.php',
 								'langs'=>'versapdf@versapdf',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 								'position'=>1000+$r,
-								'enabled'=>'$conf->versapdf->enabled',  // Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
+		    						'enabled'=>'$conf->versapdf->enabled',  // Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
 								'perms'=>'1',			                // Use 'perms'=>'$user->rights->versapdf->level1->level2' if you want your menu with a permission rules
 								'target'=>'',
 								'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
 		$this->menu[$r++]=array(	'fk_menu'=>'fk_mainmenu=versapdf,fk_leftmenu=versapdf',	    // '' if this is a top menu. For left menu, use 'fk_mainmenu=xxx' or 'fk_mainmenu=xxx,fk_leftmenu=yyy' where xxx is mainmenucode and yyy is a leftmenucode
 								'type'=>'left',			                // This is a Left menu entry
-								'titre'=>'New MyObject',
+								'titre'=>'Espacement',
 								'mainmenu'=>'versapdf',
 								'leftmenu'=>'versapdf',
 								'url'=>'/versapdf/myobject_page.php?action=create',
 								'langs'=>'versapdf@versapdf',	        // Lang file to use (without .lang) by module. File must be in langs/code_CODE/ directory.
 								'position'=>1000+$r,
-								'enabled'=>'$conf->versapdf->enabled',  // Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
+		    						'enabled'=>'$conf->versapdf->enabled',  // Define condition to show or hide menu entry. Use '$conf->versapdf->enabled' if entry must be visible if module is enabled. Use '$leftmenu==\'system\'' to show if leftmenu system is selected.
 								'perms'=>'1',			                // Use 'perms'=>'$user->rights->versapdf->level1->level2' if you want your menu with a permission rules
 								'target'=>'',
 								'user'=>2);				                // 0=Menu for internal users, 1=external users, 2=both
-		END MODULEBUILDER LEFTMENU MYOBJECT */
+		/*END MODULEBUILDER LEFTMENU MYOBJECT */
 
 
 		// Exports
@@ -311,8 +312,7 @@ class modversapdf extends DolibarrModules
 		// Create extrafields
 		include_once DOL_DOCUMENT_ROOT.'/core/class/extrafields.class.php';
 		$extrafields = new ExtraFields($this->db);
-		
-		$result1=$extrafields->addExtraField('rg', "Remise de garantie", 'boolean', 1, 3, 'facture');
+		//!!!!$result1=$extrafields->addExtraField('rg', "Remise de garantie", 'boolean', 1, 3, 'facture');
 		//$result2=$extrafields->addExtraField('myattr2', "New Attr 2 label", 'string', 1, 10, 'project');
 
 		return $this->_init($sql, $options);
