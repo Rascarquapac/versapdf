@@ -122,7 +122,15 @@ class modversapdf extends DolibarrModules
 		//                             1=>array('VERSAPDF_MYNEWCONST2','chaine','myvalue','This is another constant to add',0, 'current', 1)
 		// );
 		$this->const = array(
-			1=>array('VERSAPDF_MYCONSTANT', 'chaine', 'avalue', 'This is a constant to add', 1, 'allentities', 1)
+			0=>array('VERSAPDF_MYCONSTANT', 'chaine', 'avalue', 'This is a constant to add', 1, 'allentities', 1),
+		    1=>array('VERSAPDF_COLWIDTH_DESCRIPTION', 'chaine', '120', 'Description column width', 1, 'allentities', 1),
+		    2=>array('VERSAPDF_COLWIDTH_TVA', 'chaine', '10', ' TVA column width', 1, 'allentities', 1),
+		    3=>array('VERSAPDF_COLWIDTH_UP', 'chaine', '16', 'Unit Price columns width', 1, 'allentities', 1),
+		    4=>array('VERSAPDF_COLWIDTH_QTY', 'chaine', '14', 'Quantity column width', 1, 'allentities', 1),
+		    5=>array('VERSAPDF_COLWIDTH_UNIT', 'chaine', '10', 'Unit column width (if any)', 1, 'allentities', 1),
+		    6=>array('VERSAPDF_COLWIDTH_DISCOUNT', 'chaine', '12', 'Discount column width (if any)', 1, 'allentities', 1),
+		    7=>array('VERSAPDF_COLWIDTH_TOTALHT', 'chaine', '20', 'Total HT  column width (if any)', 1, 'allentities', 1),
+		    8=>array('VERSAPDF_COLWIDTH_PICTURE', 'chaine', '20', 'Picture column width (if any)', 1, 'allentities', 1)
 		);
 
 		// Array to add new pages in new tabs
