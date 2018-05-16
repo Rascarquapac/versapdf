@@ -20,12 +20,12 @@
 # Module label 'ModuleversapdfName'
 ModuleversapdfName = Mon module
 # Module description 'ModuleversapdfDesc'
-ModuleversapdfDesc = Description de mon module
+ModuleversapdfDesc = Description de versapdf
 
 #
 # Page d'administration
 #
-versapdfSetup = Configuration du module mon module
+versapdfSetup = Configuration du module versapdf
 Settings = Réglages
 versapdfSetupPage = Page de réglage de mon module
 
@@ -33,13 +33,25 @@ versapdfSetupPage = Page de réglage de mon module
 # Page À propos
 #
 About = À propos
-versapdfAbout = À propos de mon module
-versapdfAboutPage = Page à propos de mon module
+versapdfAbout = À propos de versapdf
+versapdfAboutPage = Page à propos versapdf
 
 #
-# Page d'exemple
+# Parameters pages
 #
 MyPageName = Nom de ma page
+Columns = Colonnes
+VATColumnWidth = Largeur de la colonne TVA
+UPColumnWidth = Largeur de la colonne Prix Unitaire
+QuantityColumnWidth = Largeur de la colonne Quantité
+UnitColumnWidth = Largeur de la colonne Unité
+DiscountColumnWidth = Largeur de la colonne Remise
+TotalHTColumnWidth = Largeur de la colonne Total Hors Taxe
+PictureColumnWidth = Largeur de la colonne Image
+DescriptionColumnWidth = Largeur de la colonne Description
+
+columnsWidths = Largeurs de colonnes
+nocolumn = Pas de colonne
 
 #
 # Box d'exemple

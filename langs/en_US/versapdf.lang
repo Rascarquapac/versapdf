@@ -33,16 +33,28 @@ versapdfSetupPage = versapdf setup page
 # About page
 #
 About = About
-versapdfAbout = About my module
+versapdfAbout = About versapdf
 versapdfAboutPage = versapdf about page
 
 #
-# Sample page
+# Parameters pages
 #
 MyPageName = My page name
+Columns = Columns
+VATColumnWidth = VAT column width
+UPColumnWidth = Unit Price column width
+QuantityColumnWidth = Quantity column width
+UnitColumnWidth = Unit column width
+DiscountColumnWidth = Discount column width
+TotalHTColumnWidth = TotalHT column width
+PictureColumnWidth = Picture column width
+DescriptionColumnWidth = Description column width
 
+columnsWidths = Columns Widths
+nocolumn = No column
 #
 # Sample box
 #
 MyWidget = My widget
 MyWidgetDescription = My widget description
+
