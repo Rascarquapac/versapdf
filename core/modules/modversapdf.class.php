@@ -124,7 +124,7 @@ class modversapdf extends DolibarrModules
 		$this->const = array(
 			0=>array('VERSAPDF_MYCONSTANT', 'chaine', 'avalue', 'This is a constant to add', 1, 'allentities', 1),
 		    1=>array('VERSAPDF_COLWIDTH_DESCRIPTION', 'chaine', '120', 'Description column width', 1, 'allentities', 1),
-		    2=>array('VERSAPDF_COLWIDTH_TVA', 'chaine', '10', ' TVA column width', 1, 'allentities', 1),
+		    2=>array('VERSAPDF_COLWIDTH_VAT', 'chaine', '10', ' VAT column width', 1, 'allentities', 1),
 		    3=>array('VERSAPDF_COLWIDTH_UP', 'chaine', '16', 'Unit Price columns width', 1, 'allentities', 1),
 		    4=>array('VERSAPDF_COLWIDTH_QTY', 'chaine', '14', 'Quantity column width', 1, 'allentities', 1),
 		    5=>array('VERSAPDF_COLWIDTH_UNIT', 'chaine', '10', 'Unit column width (if any)', 1, 'allentities', 1),
